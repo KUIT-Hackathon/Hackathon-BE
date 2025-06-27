@@ -9,8 +9,8 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {
-    // USER
-    AUTH_NOT_FOUND(BAD_REQUEST, "존재하지 않는 유저입니다.");
+    // AUTH
+    AUTH_REQUIRED(BAD_REQUEST, "로그인이 필요한 서비스입니다.");
 
     private final HttpStatus code;
     private final String message;
