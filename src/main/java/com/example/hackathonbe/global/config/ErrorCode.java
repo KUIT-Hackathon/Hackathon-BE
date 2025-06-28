@@ -20,7 +20,10 @@ public enum ErrorCode {
     ALREADY_FOLLOWED_FRIEND(BAD_REQUEST, "이미 팔로우한 친구입니다."),
 
     // Message
-    NO_MESSAGES_FOUND(BAD_REQUEST, "작성된 메시지가 없습니다.");
+    NO_MESSAGES_FOUND(BAD_REQUEST, "작성된 메시지가 없습니다."),
+
+    // Notification
+    NO_NOTIFICATIONS_FOUND(BAD_REQUEST, "알림이 없습니다.");
 
     private final HttpStatus code;
     private final String message;
