@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
     private final UserRepository userRepository;
 
-    public LoginResponseDto login(LoginRequestDto request) throws IllegalAccessException {
+    public LoginResponseDto login(LoginRequestDto request) {
         UserEntity user = userRepository.findByLoginId(request.getId())
                 .orElseThrow(() -> new BusinessException(ErrorCode.LOGIN_FAILED));
 

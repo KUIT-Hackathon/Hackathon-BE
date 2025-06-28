@@ -23,7 +23,7 @@ public class ProfileController {
     @RequireLogin
     @GetMapping("/user/profile")
     public ApiResponse<UserProfileResponseDto> getProfile(
-            @RequestHeader(value = "userId") Long userId
+            @RequestHeader(value = "userId", required = true) Long userId
     ) {
         UserProfileResponseDto profile = profileService.getProfile(userId);
         return ApiResponse.ok(profile);

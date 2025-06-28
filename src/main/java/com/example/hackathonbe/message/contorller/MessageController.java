@@ -6,10 +6,7 @@ import com.example.hackathonbe.global.response.EmptyResponseDto;
 import com.example.hackathonbe.message.dto.CreateMessageRequestDto;
 import com.example.hackathonbe.message.service.CreateMessageService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(ApiPath.PUBLIC)
@@ -19,6 +16,7 @@ public class MessageController {
 
     @PostMapping("/message")
     public ApiResponse<EmptyResponseDto> createMessage(
+            @RequestHeader(value = "userId", required = false) Long userId,
             @RequestBody CreateMessageRequestDto createMessageRequestDto
     ) {
         createMessageService.create(createMessageRequestDto);
