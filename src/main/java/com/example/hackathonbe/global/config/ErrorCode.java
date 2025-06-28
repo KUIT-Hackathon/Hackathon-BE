@@ -10,7 +10,13 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 @AllArgsConstructor
 public enum ErrorCode {
     // AUTH
-    AUTH_REQUIRED(BAD_REQUEST, "로그인이 필요한 서비스입니다.");
+    AUTH_REQUIRED(BAD_REQUEST, "로그인이 필요한 서비스입니다."),
+
+    // PAPER
+    NO_PAPERS_FOUND(BAD_REQUEST, "생성된 페이지가 없습니다."),
+
+    // Follow
+    NO_FRIEND_FOUND(BAD_REQUEST, "친구가 없습니다.");
 
     private final HttpStatus code;
     private final String message;
