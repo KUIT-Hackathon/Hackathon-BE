@@ -5,6 +5,7 @@ import com.example.hackathonbe.follow.entity.FollowEntity;
 import com.example.hackathonbe.follow.repository.FollowRepository;
 import com.example.hackathonbe.global.config.BusinessException;
 import com.example.hackathonbe.global.config.ErrorCode;
+import com.example.hackathonbe.notification.share.AddNotificationAsync;
 import com.example.hackathonbe.user.entity.UserEntity;
 import com.example.hackathonbe.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,16 +22,20 @@ public class FollowService {
 
     private final FollowRepository followRepository;
     private final UserRepository userRepository;
+    private final AddNotificationAsync addNotificationAsync;
 
     @Transactional
     public void create(Long fromUserId, Long toUserId) {
 
-        if(followRepository.existsByFromUserIdAndToUserId(fromUserId, toUserId)){
+        if (followRepository.existsByFromUserIdAndToUserId(fromUserId, toUserId)) {
             throw new BusinessException(ErrorCode.ALREADY_FOLLOWED_FRIEND);
         }
 
         FollowEntity followEntity = FollowEntity.create(fromUserId, toUserId);
         followRepository.save(followEntity);
+
+        UserEntity userEntity = userRepository.findById(fromUserId).orElseThrow();
+        addNotificationAsync.addFollowNotification(toUserId, userEntity.getName(), userEntity.getLoginId());
     }
 
     @Transactional(readOnly = true)
@@ -43,7 +48,7 @@ public class FollowService {
                 .map(FriendsSearchListResponseDto::from)
                 .collect(Collectors.toList());
 
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             throw new BusinessException(ErrorCode.NO_RESULT);
         }
 
@@ -68,7 +73,6 @@ public class FollowService {
 
         return result;
     }
-
 
 
     @Transactional(readOnly = true)
