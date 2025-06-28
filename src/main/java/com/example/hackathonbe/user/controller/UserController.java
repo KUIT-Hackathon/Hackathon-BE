@@ -2,6 +2,7 @@ package com.example.hackathonbe.user.controller;
 
 import com.example.hackathonbe.global.Path.ApiPath;
 import com.example.hackathonbe.global.response.ApiResponse;
+import com.example.hackathonbe.global.response.EmptyResponseDto;
 import com.example.hackathonbe.user.dto.LoginRequestDto;
 import com.example.hackathonbe.user.dto.LoginResponseDto;
 import com.example.hackathonbe.user.dto.SignupRequestDto;
@@ -22,13 +23,13 @@ public class UserController {
     private final LoginService loginService;
 
     @PostMapping("/auth/signup")
-    public ApiResponse<Void> signup(@RequestBody SignupRequestDto request){
+    public ApiResponse<EmptyResponseDto> signup(@RequestBody SignupRequestDto request){
         signupService.signup(request);
-        return ApiResponse.ok(null);
+        return ApiResponse.ok(new EmptyResponseDto());
     }
 
     @PostMapping("/auth/login")
-    public ApiResponse<LoginResponseDto> login(@RequestBody LoginRequestDto request) throws IllegalAccessException {
+    public ApiResponse<LoginResponseDto> login(@RequestBody LoginRequestDto request) {
         LoginResponseDto response = loginService.login(request);
         return ApiResponse.ok(response);
     }
