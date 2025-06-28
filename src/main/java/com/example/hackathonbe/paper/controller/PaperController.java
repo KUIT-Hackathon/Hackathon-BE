@@ -61,16 +61,6 @@ public class PaperController {
         return ApiResponse.ok(getPublicPaperResponseDto);
     }
 
-    @GetMapping("/paper/{uuid}/message")
-    public ApiResponse<GetMessageResponseDto> getPaperMessage(
-            @RequestHeader(value = "userId", required = false) Long userId,
-            @PathVariable(value = "uuid") String uuid
-    ) {
-        GetMessageResponseDto getMessageResponseDto = getMessageService.get(uuid, userId);
-
-        return ApiResponse.ok(getMessageResponseDto);
-    }
-
     @GetMapping("/paper/{uuid}")
     public ApiResponse<GetSpecificPaperResponseDto> getSpecificPaper(
             @RequestHeader(value = "userId", required = false) Long userId,
@@ -79,5 +69,15 @@ public class PaperController {
         GetSpecificPaperResponseDto getSpecificPaperResponseDto = getSpecificPaperService.get(uuid);
 
         return ApiResponse.ok(getSpecificPaperResponseDto);
+    }
+
+    @GetMapping("/paper/{uuid}/message")
+    public ApiResponse<GetMessageResponseDto> getPaperMessage(
+            @RequestHeader(value = "userId", required = false) Long userId,
+            @PathVariable(value = "uuid") String uuid
+    ) {
+        GetMessageResponseDto getMessageResponseDto = getMessageService.get(uuid, userId);
+
+        return ApiResponse.ok(getMessageResponseDto);
     }
 }

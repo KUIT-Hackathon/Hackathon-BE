@@ -38,7 +38,7 @@ public class AddNotificationAsync {
     public void addFriendPaperCreatedNotification(Long toUserId, String name) {
         AlarmEntity alarmEntity = AlarmEntity.create(Type.CREATE, name + "님의 롤링페이퍼가 생겼어요!");
         AlarmEntity saved = alarmRepository.save(alarmEntity);
-        followRepository.findAllByFromUserId(toUserId)
+        followRepository.findAllByToUserId(toUserId)
                 .forEach(it -> notificationRepository.save(NotificationEntity.create(it.getFromUserId(), saved.getId())));
     }
 
