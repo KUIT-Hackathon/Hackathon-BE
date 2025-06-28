@@ -4,10 +4,7 @@ import com.example.hackathonbe.global.Path.ApiPath;
 import com.example.hackathonbe.global.config.annotation.RequireLogin;
 import com.example.hackathonbe.global.response.ApiResponse;
 import com.example.hackathonbe.paper.dto.*;
-import com.example.hackathonbe.paper.service.CreatePaperService;
-import com.example.hackathonbe.paper.service.GetFriendsPaperService;
-import com.example.hackathonbe.paper.service.GetMyPaperService;
-import com.example.hackathonbe.paper.service.GetPublicPaperService;
+import com.example.hackathonbe.paper.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +16,7 @@ public class PaperController {
     private final GetMyPaperService getMyPaperService;
     private final GetFriendsPaperService getFriendsPaperService;
     private final GetPublicPaperService getPublicPaperService;
+    private final GetMessageService getMessageService;
 
     @RequireLogin
     @PostMapping("/paper")
@@ -54,5 +52,14 @@ public class PaperController {
         GetPublicPaperResponseDto getPublicPaperResponseDto = getPublicPaperService.get();
 
         return ApiResponse.ok(getPublicPaperResponseDto);
+    }
+
+    @GetMapping("/paper/{uuid}")
+    public ApiResponse<GetMessageResponseDto> get(
+            @PathVariable(value = "uuid") String uuid
+    ) {
+        GetMessageResponseDto getMessageResponseDto = getMessageService.get(uuid);
+
+        return ApiResponse.ok(getMessageResponseDto);
     }
 }
