@@ -5,11 +5,13 @@ import com.example.hackathonbe.global.config.ErrorCode;
 import com.example.hackathonbe.notification.dto.GetNotificationResponseDto;
 import com.example.hackathonbe.notification.repository.AlarmRepository;
 import com.example.hackathonbe.notification.repository.NotificationRepository;
+import com.example.hackathonbe.user.entity.UserEntity;
 import com.example.hackathonbe.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -25,7 +27,10 @@ public class GetNotificationService {
             throw new BusinessException(ErrorCode.NO_NOTIFICATIONS_FOUND);
         }
 
-        LocalDate lastCheckedAt = userRepository.findById(userId).orElseThrow().getLastCheckedAt();
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow();
+        LocalDateTime lastCheckedAt = userEntity.getLastCheckedAt();
+        userEntity.setLastCheckedAt(LocalDateTime.now());
+
         return new GetNotificationResponseDto(alarmRepository.findAllByIdIn(notificationIdsList), lastCheckedAt);
     }
 }
