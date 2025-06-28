@@ -9,10 +9,10 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ApiResponse<T> {
-    private T data;
+public class ErrorResponse {
+    private String message;
 
-    public static <T> ApiResponse<T> ok(T data) {
-        return new ApiResponse<>(data);
+    public static ErrorResponse from(String message) {
+        return new ErrorResponse(message);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.hackathonbe.global.config;
 
+import com.example.hackathonbe.global.response.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -13,17 +14,23 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoResourceFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<?> handleNoResourceFoundException(NoResourceFoundException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(ErrorResponse.from(ex.getMessage()));
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<?> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.from(ex.getMessage()));
     }
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<?> handleBusinessException(BusinessException ex) {
-        return ResponseEntity.status(ex.getErrorCode().getCode()).body(ex.getMessage());
+        return ResponseEntity
+                .status(ex.getErrorCode().getCode())
+                .body(ErrorResponse.from(ex.getMessage()));
     }
 }
