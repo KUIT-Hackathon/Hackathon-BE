@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface AlarmRepository extends JpaRepository<AlarmEntity, Long> {
-    List<AlarmEntity> findAllByIdIn(List<Long> userId);
+    List<AlarmEntity> findAllByIdInOrderByCreatedAtDesc(List<Long> userId);
 }

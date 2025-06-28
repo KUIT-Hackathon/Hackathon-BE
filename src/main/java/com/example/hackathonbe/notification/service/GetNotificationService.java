@@ -17,6 +17,6 @@ public class GetNotificationService {
     public GetNotificationResponseDto get(Long userId) {
         List<Long> notificationIdsList = notificationRepository.findAllByUserId(userId).stream().map(it -> it.getAlarmId()).toList();
 
-        return new GetNotificationResponseDto(alarmRepository.findAllByIdIn(notificationIdsList));
+        return new GetNotificationResponseDto(alarmRepository.findAllByIdInOrderByCreatedAtDesc(notificationIdsList));
     }
 }
