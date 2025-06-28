@@ -30,9 +30,10 @@ public class FollowController {
     @RequireLogin
     @GetMapping("/user/search")
     public ApiResponse<List<FriendsSearchListResponseDto>> searchUsers(
+            @RequestHeader(value = "userId") Long userId,
             @RequestParam String query
     ) {
-        List<FriendsSearchListResponseDto> result = followService.searchUsersByLoginId(query);
+        List<FriendsSearchListResponseDto> result = followService.searchUsersByLoginId(userId, query);
         return ApiResponse.ok(result);
     }
 

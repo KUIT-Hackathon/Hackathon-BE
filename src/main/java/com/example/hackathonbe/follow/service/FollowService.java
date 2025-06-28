@@ -39,12 +39,15 @@ public class FollowService {
     }
 
     @Transactional(readOnly = true)
-    public List<FriendsSearchListResponseDto> searchUsersByLoginId(String query) {
+    public List<FriendsSearchListResponseDto> searchUsersByLoginId(Long userId, String query) {
 
         List<FriendsSearchListResponseDto> result = new ArrayList<>();
 
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow();
+        String myLoginId = userEntity.getLoginId();
 
         result = userRepository.findByLoginIdContaining(query).stream()
+                .filter(user -> !user.getLoginId().equals(myLoginId))  // 나 자신 제외
                 .map(FriendsSearchListResponseDto::from)
                 .collect(Collectors.toList());
 
