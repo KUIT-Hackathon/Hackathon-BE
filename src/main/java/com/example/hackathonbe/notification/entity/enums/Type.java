@@ -7,8 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Type {
     FOLLOW("FOLLOW"),
-    CREATE("CREATE"),
-    OPEN("OPEN");
+    CREATE("CREATE");
 
     private final String type;
 }

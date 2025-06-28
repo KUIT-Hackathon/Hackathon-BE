@@ -18,7 +18,6 @@ public enum ErrorCode {
     USER_NOT_FOUND(NOT_FOUND, "존재하지 않는 사용자입니다."),
     NOT_PERMISSION(FORBIDDEN, "접근 권한이 없습니다."),
 
-
     // PAPER
     NO_PAPERS_FOUND(NOT_FOUND, "생성된 페이지가 없습니다."),
 
