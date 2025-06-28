@@ -5,10 +5,14 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @Getter
 @AllArgsConstructor
 public enum ErrorCode {
+    // GLOBAL
+    INTERNAL_SEVER_ERROR(INTERNAL_SERVER_ERROR, "알 수없는 오류입니다."),
+
     // AUTH
     AUTH_REQUIRED(BAD_REQUEST, "로그인이 필요한 서비스입니다."),
     USER_NOT_FOUND(BAD_REQUEST, "존재하지 않는 사용자입니다."),

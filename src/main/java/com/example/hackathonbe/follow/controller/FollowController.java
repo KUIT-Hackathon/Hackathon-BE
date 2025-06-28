@@ -36,4 +36,22 @@ public class FollowController {
         return ApiResponse.ok(result);
     }
 
+    @RequireLogin
+    @GetMapping("/user/following")
+    public ApiResponse<List<FriendsSearchListResponseDto>> getFollowing(
+            @RequestHeader(value = "userId") Long userId,
+            @RequestParam(required = false) String query
+    ) {
+        return ApiResponse.ok(followService.getFollowingList(userId, query));
+    }
+    @RequireLogin
+    @GetMapping("/user/follower")
+    public ApiResponse<List<FriendsSearchListResponseDto>> getFollower(
+            @RequestHeader(value = "userId") Long userId
+
+    ) {
+        return ApiResponse.ok(followService.getFollowerList(userId));
+    }
+
+
 }
