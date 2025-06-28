@@ -17,6 +17,14 @@ public class AlarmEntity {
     @Column(nullable = false)
     private Type type;
 
-    @Column(columnDefinition = "varchar(8)", nullable = false)
-    private String hint;
+    @Column(columnDefinition = "varchar(50)", nullable = false)
+    private String message;
+
+    public static AlarmEntity create(Type type, String message) {
+        AlarmEntity entity = new AlarmEntity();
+        entity.type = type;
+        entity.message = message;
+
+        return entity;
+    }
 }

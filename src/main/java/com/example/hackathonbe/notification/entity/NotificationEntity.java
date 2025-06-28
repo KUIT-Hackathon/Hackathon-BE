@@ -18,6 +18,11 @@ public class NotificationEntity {
     @Column(columnDefinition = "bigint", nullable = false)
     private Long alarmId;
 
-    @Column(columnDefinition = "bool", nullable = false)
-    private boolean is_checked = false;
+    public static NotificationEntity create(Long userId, Long alarmId) {
+        NotificationEntity notificationEntity = new NotificationEntity();
+        notificationEntity.userId = userId;
+        notificationEntity.alarmId = alarmId;
+
+        return notificationEntity;
+    }
 }
