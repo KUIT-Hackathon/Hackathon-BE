@@ -23,6 +23,7 @@ public class PaperController {
     @RequireLogin
     @PostMapping("/paper")
     public ApiResponse<EmptyResponseDto> createPaper(
+            @RequestHeader(value = "userId", required = true) Long userId,
             @RequestBody CreatePaperRequestDto createPaperRequestDto
     ) {
         createPaperService.create(createPaperRequestDto);
@@ -50,25 +51,29 @@ public class PaperController {
         return ApiResponse.ok(getFriendsPaperResponseDto);
     }
 
+    @RequireLogin
     @GetMapping("/paper/public")
-    public ApiResponse<GetPublicPaperResponseDto> getPublicPaper() {
+    public ApiResponse<GetPublicPaperResponseDto> getPublicPaper(
+            @RequestHeader(value = "userId", required = true) Long userId
+    ) {
         GetPublicPaperResponseDto getPublicPaperResponseDto = getPublicPaperService.get();
 
         return ApiResponse.ok(getPublicPaperResponseDto);
     }
 
-    @RequireLogin
     @GetMapping("/paper/{uuid}/message")
     public ApiResponse<GetMessageResponseDto> getPaperMessage(
+            @RequestHeader(value = "userId", required = false) Long userId,
             @PathVariable(value = "uuid") String uuid
     ) {
-        GetMessageResponseDto getMessageResponseDto = getMessageService.get(uuid);
+        GetMessageResponseDto getMessageResponseDto = getMessageService.get(uuid, userId);
 
         return ApiResponse.ok(getMessageResponseDto);
     }
 
     @GetMapping("/paper/{uuid}")
     public ApiResponse<GetSpecificPaperResponseDto> getSpecificPaper(
+            @RequestHeader(value = "userId", required = false) Long userId,
             @PathVariable(value = "uuid") String uuid
     ) {
         GetSpecificPaperResponseDto getSpecificPaperResponseDto = getSpecificPaperService.get(uuid);

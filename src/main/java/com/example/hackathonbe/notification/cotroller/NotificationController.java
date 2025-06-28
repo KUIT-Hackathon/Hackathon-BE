@@ -20,7 +20,7 @@ public class NotificationController {
     @RequireLogin
     @GetMapping("/notification")
     public ApiResponse<GetNotificationResponseDto> getNotification(
-            @RequestHeader(value = "userId") Long userId
+            @RequestHeader(value = "userId", required = true) Long userId
     ) {
         GetNotificationResponseDto getNotificationResponseDto = getNotificationService.get(userId);
 
