@@ -56,7 +56,8 @@ public class AddNotificationAsync {
                         Type.OPEN,
                         "나의 롤링페이퍼가 오늘 열렸어요!"
                 );
-                alarmRepository.save(alarmEntity);
+                AlarmEntity saved = alarmRepository.save(alarmEntity);
+                notificationRepository.save(NotificationEntity.create(ownerId, saved.getId()));
             }
         }
     }
