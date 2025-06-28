@@ -9,6 +9,8 @@ import java.util.List;
 
 @Repository
 public interface PaperRepository extends JpaRepository<PaperEntity, Long> {
+    PaperEntity findByUuid(String uuid);
+
     List<PaperEntity> findAllByOwner(Long userId);
 
     List<PaperEntity> findAllByVisibilityScope(VisibilityScope visibilityScope);

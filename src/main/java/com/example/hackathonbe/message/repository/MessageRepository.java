@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface MessageRepository extends JpaRepository<MessageEntity, Long> {
-    List<MessageEntity> findAllByUuid(String id);
+    List<MessageEntity> findAllByUuid(String uuid);
+
+    long countAllByUuid(String uuid);
 }
