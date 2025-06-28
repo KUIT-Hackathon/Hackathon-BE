@@ -1,4 +1,4 @@
-package com.example.hackathonbe.message.contorller;
+package com.example.hackathonbe.message.controller;
 
 import com.example.hackathonbe.global.Path.ApiPath;
 import com.example.hackathonbe.global.response.ApiResponse;

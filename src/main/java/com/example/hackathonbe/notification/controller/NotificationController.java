@@ -1,4 +1,4 @@
-package com.example.hackathonbe.notification.cotroller;
+package com.example.hackathonbe.notification.controller;
 
 import com.example.hackathonbe.global.Path.ApiPath;
 import com.example.hackathonbe.global.config.annotation.RequireLogin;
