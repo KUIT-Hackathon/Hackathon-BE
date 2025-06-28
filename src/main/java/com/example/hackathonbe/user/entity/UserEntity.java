@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -35,6 +36,6 @@ public class UserEntity {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(columnDefinition = "TIMESTAMP", nullable = true)
-    private LocalDateTime lastCheckedAt;
+    private LocalDate lastCheckedAt;
 
 }
