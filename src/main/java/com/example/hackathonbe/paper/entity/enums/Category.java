@@ -1,4 +1,4 @@
-package com.example.hackathonbe.paper.entity;
+package com.example.hackathonbe.paper.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.example.hackathonbe.paper.service;
 
 import com.example.hackathonbe.paper.dto.CreatePaperRequestDto;
-import com.example.hackathonbe.paper.entity.enums.PaperEntity;
+import com.example.hackathonbe.paper.entity.PaperEntity;
 import com.example.hackathonbe.paper.repository.PaperRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

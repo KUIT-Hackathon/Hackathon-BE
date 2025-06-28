@@ -1,6 +1,6 @@
 package com.example.hackathonbe.paper.dto;
 
-import com.example.hackathonbe.paper.entity.Category;
+import com.example.hackathonbe.paper.entity.enums.Category;
 import com.example.hackathonbe.paper.entity.enums.VisibilityScope;
 import jakarta.annotation.Nullable;
 import lombok.Getter;
