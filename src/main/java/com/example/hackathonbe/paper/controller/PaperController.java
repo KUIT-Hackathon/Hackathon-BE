@@ -21,7 +21,6 @@ public class PaperController {
     @RequireLogin
     @PostMapping("/paper")
     public ApiResponse<CreatePaperResponseDto> createPaper(
-            @RequestHeader(value = "userId", required = true) Long userId,
             @RequestBody CreatePaperRequestDto createPaperRequestDto
     ) {
         createPaperService.create(createPaperRequestDto);
@@ -29,6 +28,7 @@ public class PaperController {
         return ApiResponse.ok(new CreatePaperResponseDto());
     }
 
+    @RequireLogin
     @GetMapping("/paper/my")
     public ApiResponse<GetMyPaperResponseDto> getMyPaper(
             @RequestHeader(value = "userId", required = true) Long userId
@@ -38,6 +38,7 @@ public class PaperController {
         return ApiResponse.ok(getMyPaperResponseDto);
     }
 
+    @RequireLogin
     @GetMapping("/paper/friends")
     public ApiResponse<GetFriendsPaperResponseDto> getFriendsPaper(
             @RequestHeader(value = "userId", required = true) Long userId
@@ -54,6 +55,7 @@ public class PaperController {
         return ApiResponse.ok(getPublicPaperResponseDto);
     }
 
+    @RequireLogin
     @GetMapping("/paper/{uuid}")
     public ApiResponse<GetMessageResponseDto> get(
             @PathVariable(value = "uuid") String uuid
