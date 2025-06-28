@@ -3,7 +3,6 @@ package com.example.hackathonbe.user.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -33,8 +32,5 @@ public class UserEntity {
 
     @Setter
     @Column(columnDefinition = "TIMESTAMP", nullable = true)
-    private LocalDateTime lastCheckedAt;
-
-    public void setLastCheckedAt(LocalDateTime now) {
-    }
+    private LocalDateTime lastCheckedAt = LocalDateTime.now();
 }
