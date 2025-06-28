@@ -16,7 +16,10 @@ public enum ErrorCode {
     NO_PAPERS_FOUND(BAD_REQUEST, "생성된 페이지가 없습니다."),
 
     // Follow
-    NO_FRIEND_FOUND(BAD_REQUEST, "친구가 없습니다.");
+    NO_FRIENDS_FOUND(BAD_REQUEST, "친구가 없습니다."),
+
+    // Message
+    NO_MESSAGES_FOUND(BAD_REQUEST, "작성된 메시지가 없습니다.");
 
     private final HttpStatus code;
     private final String message;

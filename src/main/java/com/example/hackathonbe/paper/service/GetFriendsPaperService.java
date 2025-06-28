@@ -20,7 +20,7 @@ public class GetFriendsPaperService {
     public GetFriendsPaperResponseDto get(Long id) {
         List<Long> friendIdsList = followRepository.findAllByFromUserId(id).stream().map(it -> it.getToUserId()).toList();
         if (friendIdsList.isEmpty()) { // 친구가 없으면 에러 내리기
-            throw new BusinessException(ErrorCode.NO_FRIEND_FOUND);
+            throw new BusinessException(ErrorCode.NO_FRIENDS_FOUND);
         }
 
         List<PaperEntity> paperEntityList = paperRepository.findAllByOwnerIn(friendIdsList); // 우선 In 사용해서 가져오게 디자인. 추후 Exists 사용하게 변경할 수도 있음
