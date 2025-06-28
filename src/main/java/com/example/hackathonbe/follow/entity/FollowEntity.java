@@ -8,6 +8,11 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"from_user_id", "to_user_id"})
+        }
+)
 @NoArgsConstructor
 public class FollowEntity {
     @Id
@@ -24,7 +29,7 @@ public class FollowEntity {
     @Column(columnDefinition = "timestamp", nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    private static FollowEntity create(Long from_user_id, Long to_user_id) {
+    public static FollowEntity create(Long from_user_id, Long to_user_id) {
         FollowEntity followEntity = new FollowEntity();
         followEntity.fromUserId = from_user_id;
         followEntity.toUserId = to_user_id;
