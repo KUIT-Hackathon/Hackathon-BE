@@ -7,7 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Category {
     BIRTHDAY("BIRTHDAY"),
-    FINISH("FINISH");
+    PROMOTION("PROMOTION"),
+    GRADUATION("GRADUATION"),
+    EMPLOYMENT("EMPLOYMENT"),
+    RESIGNATION("RESIGNATION");
 
     private final String name;
 }
