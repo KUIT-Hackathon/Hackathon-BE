@@ -18,6 +18,7 @@ public class PaperController {
     private final GetFriendsPaperService getFriendsPaperService;
     private final GetPublicPaperService getPublicPaperService;
     private final GetMessageService getMessageService;
+    private final GetSpecificPaperService getSpecificPaperService;
 
     @RequireLogin
     @PostMapping("/paper")
@@ -57,12 +58,21 @@ public class PaperController {
     }
 
     @RequireLogin
-    @GetMapping("/paper/{uuid}")
-    public ApiResponse<GetMessageResponseDto> get(
+    @GetMapping("/paper/{uuid}/message")
+    public ApiResponse<GetMessageResponseDto> getPaperMessage(
             @PathVariable(value = "uuid") String uuid
     ) {
         GetMessageResponseDto getMessageResponseDto = getMessageService.get(uuid);
 
         return ApiResponse.ok(getMessageResponseDto);
+    }
+
+    @GetMapping("/paper/{uuid}")
+    public ApiResponse<GetSpecificPaperResponseDto> getSpecificPaper(
+            @PathVariable(value = "uuid") String uuid
+    ) {
+        GetSpecificPaperResponseDto getSpecificPaperResponseDto = getSpecificPaperService.get(uuid);
+
+        return ApiResponse.ok(getSpecificPaperResponseDto);
     }
 }
