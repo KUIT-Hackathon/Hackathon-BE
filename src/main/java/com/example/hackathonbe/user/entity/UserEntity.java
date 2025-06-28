@@ -1,7 +1,10 @@
 package com.example.hackathonbe.user.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -29,8 +32,4 @@ public class UserEntity {
 
     @Column(columnDefinition = "TIMESTAMP", nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
-
-    @Setter
-    @Column(columnDefinition = "TIMESTAMP", nullable = true)
-    private LocalDateTime lastCheckedAt = LocalDateTime.now();
 }
