@@ -3,6 +3,7 @@ package com.example.hackathonbe.paper.controller;
 import com.example.hackathonbe.global.Path.ApiPath;
 import com.example.hackathonbe.global.config.annotation.RequireLogin;
 import com.example.hackathonbe.global.response.ApiResponse;
+import com.example.hackathonbe.global.response.EmptyResponseDto;
 import com.example.hackathonbe.paper.dto.*;
 import com.example.hackathonbe.paper.service.*;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +21,12 @@ public class PaperController {
 
     @RequireLogin
     @PostMapping("/paper")
-    public ApiResponse<CreatePaperResponseDto> createPaper(
+    public ApiResponse<EmptyResponseDto> createPaper(
             @RequestBody CreatePaperRequestDto createPaperRequestDto
     ) {
         createPaperService.create(createPaperRequestDto);
 
-        return ApiResponse.ok(new CreatePaperResponseDto());
+        return ApiResponse.ok(new EmptyResponseDto());
     }
 
     @RequireLogin
