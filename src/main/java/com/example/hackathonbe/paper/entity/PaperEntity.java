@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -24,8 +25,8 @@ public class PaperEntity {
     @Column(columnDefinition = "bigint", nullable = true)
     private Long owner;
 
-    @Column(columnDefinition = "timestamp", nullable = false)
-    private LocalDateTime publishDate;
+    @Column(nullable = false)
+    private LocalDate publishDate;
 
     @Column(columnDefinition = "varchar(20)", nullable = false)
     private String title;
@@ -41,11 +42,11 @@ public class PaperEntity {
     @Column(columnDefinition = "timestamp", nullable = false)
     private LocalDateTime createdAt;
 
-    public static PaperEntity create(Long owner, LocalDateTime publish_date, String title, VisibilityScope visibilityScope, Category category) {
+    public static PaperEntity create(Long owner, LocalDate publishDate, String title, VisibilityScope visibilityScope, Category category) {
         PaperEntity paperEntity = new PaperEntity();
         paperEntity.uuid = UUID.randomUUID().toString();
         paperEntity.owner = owner;
-        paperEntity.publishDate = publish_date;
+        paperEntity.publishDate = publishDate;
         paperEntity.title = title;
         paperEntity.visibilityScope = visibilityScope;
         paperEntity.category = category;

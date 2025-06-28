@@ -1,11 +1,11 @@
 package com.example.hackathonbe.paper.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public record GetSpecificPaperResponseDto(
         String uuid,
         String title,
-        LocalDateTime publishDate,
+        LocalDate publishDate,
         Long messageNum
 ) {
 }
