@@ -18,6 +18,7 @@ public enum ErrorCode {
     // Follow
     NO_FRIENDS_FOUND(BAD_REQUEST, "친구가 없습니다."),
     ALREADY_FOLLOWED_FRIEND(BAD_REQUEST, "이미 팔로우한 친구입니다."),
+    NO_RESULT(BAD_REQUEST, "해당 아이디를 가진 친구가 없습니다."),
 
     // Message
     NO_MESSAGES_FOUND(BAD_REQUEST, "작성된 메시지가 없습니다.");
