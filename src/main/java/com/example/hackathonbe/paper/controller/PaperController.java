@@ -1,6 +1,7 @@
 package com.example.hackathonbe.paper.controller;
 
 import com.example.hackathonbe.global.Path.ApiPath;
+import com.example.hackathonbe.global.config.annotation.RequireLogin;
 import com.example.hackathonbe.global.response.ApiResponse;
 import com.example.hackathonbe.paper.dto.CreatePaperRequestDto;
 import com.example.hackathonbe.paper.dto.CreatePaperResponseDto;
@@ -14,9 +15,10 @@ import org.springframework.web.bind.annotation.*;
 public class PaperController {
     private final CreatePaperService createPaperService;
 
+    @RequireLogin
     @PostMapping("/paper/create")
     public ApiResponse<CreatePaperResponseDto> createPaper(
-            @RequestHeader(value = "userId", required = true) String userId,
+            @RequestHeader(value = "userId", required = true)
             @RequestBody CreatePaperRequestDto createPaperRequestDto
     ) {
         createPaperService.create(createPaperRequestDto);
