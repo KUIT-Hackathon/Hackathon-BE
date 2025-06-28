@@ -16,6 +16,7 @@ public enum ErrorCode {
     // AUTH
     AUTH_REQUIRED(BAD_REQUEST, "로그인이 필요한 서비스입니다."),
     USER_NOT_FOUND(BAD_REQUEST, "존재하지 않는 사용자입니다."),
+    LOGIN_FAILED(BAD_REQUEST, "아이디 또는 비밀번호가 일치하지 않습니다."),
 
     // PAPER
     NO_PAPERS_FOUND(BAD_REQUEST, "생성된 페이지가 없습니다."),
